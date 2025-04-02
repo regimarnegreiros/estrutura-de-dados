@@ -30,9 +30,11 @@ Lista *criar_lista() {
         lista->fim = NULL;
         lista->length = 0;
     }
+    return lista;
 }
 
 void listar(Lista *lista) {
+    if (lista == NULL) return;
     No *no = lista->inicio;
     while (no != NULL) {
         printf("(%d)->", no->dado);
@@ -42,6 +44,7 @@ void listar(Lista *lista) {
 }
 
 void inserir_inicio(Lista *lista, int valor) {
+    if (lista == NULL) return;
     No *no = criar_no(valor);
     if (!no) return;
     if (lista->inicio == NULL) {
@@ -56,6 +59,7 @@ void inserir_inicio(Lista *lista, int valor) {
 }
 
 void inserir_fim(Lista *lista, int valor) {
+    if (lista == NULL) return;
     No *no = criar_no(valor);
     if (!no) return;
     if (lista->inicio == NULL) {
@@ -69,7 +73,7 @@ void inserir_fim(Lista *lista, int valor) {
 }
 
 void deletar_inicio(Lista *lista) {
-    if (lista->inicio == NULL) return;
+    if (lista == NULL || lista->inicio == NULL) return;
     if (lista->inicio->prox == NULL) {
         free(lista->inicio);
         lista->inicio = NULL;
@@ -84,7 +88,7 @@ void deletar_inicio(Lista *lista) {
 }
 
 void deletar_fim(Lista *lista) {
-    if (lista->inicio == NULL) return;
+    if (lista == NULL || lista->inicio == NULL) return;
     if (lista->inicio == lista->fim) {
         free(lista->inicio);
         lista->inicio = NULL;
@@ -102,6 +106,7 @@ void deletar_fim(Lista *lista) {
 }
 
 void inserir_ordenado(Lista *lista, int valor) {
+    if (lista == NULL) return;
     No *no = criar_no(valor);
     if (!no) return;
 
@@ -134,6 +139,7 @@ void inserir_ordenado(Lista *lista, int valor) {
 }
 
 void deletar_lista(Lista *lista) {
+    if (lista == NULL) return;
     No *atual = lista->inicio;
     No *buffer;
 

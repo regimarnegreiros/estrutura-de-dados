@@ -28,9 +28,11 @@ Pilha *criar_pilha() {
         pilha->topo = NULL;
         pilha->length = 0;
     }
+    return pilha;
 }
 
 void empilha(Pilha *pilha, int valor) {
+    if (pilha == NULL) return;
     No *no = criar_no(valor);
     if (!no) return;
     if (pilha->topo == NULL) {
@@ -43,7 +45,7 @@ void empilha(Pilha *pilha, int valor) {
 }
 
 void desempilha(Pilha *pilha) {
-    if (pilha->topo == NULL) return;
+    if (pilha == NULL || pilha->topo == NULL) return;
 
     No *buffer = pilha->topo;
     pilha->topo = pilha->topo->prox;
@@ -53,11 +55,12 @@ void desempilha(Pilha *pilha) {
 }
 
 void topo(Pilha *pilha) {
-    if (pilha->topo == NULL) return;
+    if (pilha == NULL || pilha->topo == NULL) return;
     printf("[%d]\n", pilha->topo->dado);
 }
 
 void deletar_pilha(Pilha *pilha) {
+    if (pilha == NULL) return;
     No *atual = pilha->topo;
     No *buffer;
 
