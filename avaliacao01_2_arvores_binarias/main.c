@@ -10,7 +10,7 @@ struct no {
 
 No *criar_no(int dado) {
     No *novo_no = malloc(sizeof(No));
-    if(novo_no) {
+    if (novo_no) {
         novo_no->esq = NULL;
         novo_no->dir = NULL;
         novo_no->dado = dado;
@@ -19,19 +19,19 @@ No *criar_no(int dado) {
 }
 
 void inserir_ordenado(No *arvore, int dado) {
-    if(!arvore) return;
+    if (!arvore) return;
     No *buffer = arvore;
 
-    while(1) {
-        if(dado < buffer->dado) {
-            if(buffer->esq != NULL) {
+    while (1) {
+        if (dado < buffer->dado) {
+            if (buffer->esq != NULL) {
                 buffer = buffer->esq;
                 continue;
             }
             buffer->esq = criar_no(dado);
             return;
         } else if (dado > buffer->dado) {
-            if(buffer->dir != NULL) {
+            if (buffer->dir != NULL) {
                 buffer = buffer->dir;
                 continue;
             }
@@ -44,7 +44,7 @@ void inserir_ordenado(No *arvore, int dado) {
 }
 
 int altura(No *arvore) {
-    if(arvore == NULL) return -1;
+    if (arvore == NULL) return -1;
     else {
         int altura_esq = altura(arvore->esq);
         int altura_dir = altura(arvore->dir);
@@ -56,19 +56,19 @@ int altura(No *arvore) {
 }
 
 int caminho(No *arvore, int dado) {
-    if(arvore == NULL) return 0;
+    if (arvore == NULL) return 0;
 
-    if(arvore->dado == dado) {
+    if (arvore->dado == dado) {
         printf("(%d)", arvore->dado);
         return 1;
     }
 
-    if(caminho(arvore->esq, dado)) {
+    if (caminho(arvore->esq, dado)) {
         printf("<-(%d)", arvore->dado);
         return 1;
     }
 
-    if(caminho(arvore->dir, dado)) {
+    if (caminho(arvore->dir, dado)) {
         printf("<-(%d)", arvore->dado);
         return 1;
     }
@@ -83,49 +83,50 @@ int caminho_nl(No *arvore, int dado) {
 }
 
 int total_nos(No *arvore) {
-    if(arvore == NULL) return 0;
+    if (arvore == NULL) Avaliação 1.2 - Árvores Bináriasreturn 0;
     return 1 + total_nos(arvore->dir) + total_nos(arvore->esq);
 }
 
 void exibir_pre_ordem(No *no) {
-    if(no) {
+    if (no) {
         printf("(%d)", no->dado);
         exibir_pre_ordem(no->dir);
         exibir_pre_ordem(no->esq);
     }
 }
+
 void exibir_pre_ordem_nl(No *no) {
     exibir_pre_ordem(no);
     printf("\n");
 }
 
 void exibir_em_ordem(No *no) {
-    if(no) {
+    if (no) {
         exibir_em_ordem(no->dir);
         printf("(%d)", no->dado);
         exibir_em_ordem(no->esq);
     }
 }
+
 void exibir_em_ordem_nl(No *no) {
     exibir_em_ordem(no);
     printf("\n");
 }
 
 void exibir_pos_ordem(No *no) {
-    if(no) {
+    if (no) {
         exibir_pos_ordem(no->dir);
         printf("(%d)", no->dado);
         exibir_pos_ordem(no->esq);
     }
 }
+
 void exibir_pos_ordem_nl(No *no) {
     exibir_pos_ordem(no);
     printf("\n");
 }
 
-
 int main() {
-
     No *arvore = criar_no(7);
     inserir_ordenado(arvore, 2);
     inserir_ordenado(arvore, 3);
