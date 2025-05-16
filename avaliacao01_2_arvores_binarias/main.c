@@ -83,7 +83,7 @@ int caminho_nl(No *arvore, int dado) {
 }
 
 int total_nos(No *arvore) {
-    if (arvore == NULL) Avaliação 1.2 - Árvores Bináriasreturn 0;
+    if (arvore == NULL) return 0;
     return 1 + total_nos(arvore->dir) + total_nos(arvore->esq);
 }
 
