@@ -116,8 +116,8 @@ void exibir_em_ordem_nl(No *no) {
 void exibir_pos_ordem(No *no) {
     if (no) {
         exibir_pos_ordem(no->dir);
-        printf("(%d)", no->dado);
         exibir_pos_ordem(no->esq);
+        printf("(%d)", no->dado);
     }
 }
 
